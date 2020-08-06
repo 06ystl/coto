@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script>
+    function fn() {
+        alert($('form').serialize());
+    }
+</script>
+<body>
+    <h4>同人创作网页端 新建用户界面！！！！ </h4><br>
+    <form id="form" action="##" method="post">
+    <table width ="820"  >
+
+        <tr><!-- 第一行-->
+            <td>性别 </td>
+            <td> <input type="radio" id="nan" name="sex"><label for="nan">男</label>
+                 <input type="radio" id="nv" name="sex"><label for="nv">女</label><br>
+            </td>
+        </tr>
+
+        <tr><!-- 第二行-->
+            <td>生日</td>
+            <td>
+                <select><!--年份-->
+                    <option selected="2000" >2000</option>
+                    <option >2001</option>
+                    <option >2002</option>
+                    <option >2003</option>
+                    <option >2004</option>
+                </select>
+                <select><!--月份-->
+                    <option selected="9 " >6</option>
+                    <option >7</option>
+                    <option >8</option>
+                    <option >9</option>
+                    <option >10</option>
+                </select>
+                <select><!--日-->
+                    <option >26</option>
+                    <option >27</option>
+                    <option >28</option>
+                    <option >29</option>
+                    <option >30</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr><!-- 第三行-->
+            <td>手机号</td>
+            <td>
+                <input type="text" value="请输入您的手机号">
+            </td>
+
+     </tr>
+
+        <tr><!-- 第四行-->
+                <td>所在区域</td>
+                <td>
+                    <input type="text" value="请输入所在区域">
+                </td>
+
+        </tr>
+
+        <tr><!-- 第五行-->
+                <td>学历</td>
+                <td>
+                    <select>
+                        <option value="">学历</option>
+                        <option >高中毕业</option>
+                        <option >专科</option>
+                        <option >本科</option>
+                        <option >研究生</option>
+                        <option >博士生</option>
+                    </select>
+                </td>
+
+        </tr>
+
+        <tr><!-- 第六行-->
+                <td>喜欢书籍类型</td>
+                <td>
+                    <input type="checkbox"> 玄幻
+                    <input type="checkbox"> 言情
+                    <input type="checkbox"> 穿越
+                    <input type="checkbox"> 军事
+                    <input type="checkbox"> 武侠
+                    <input type="checkbox"> 修仙
+                </td>
+
+        </tr>
+
+            <tr><!-- 第七行-->
+                <td></td>
+                <td> 
+                    <input type="submit" value="免费注册" onclick="fn()">
+                </td>
+
+            </tr>
+
+            <tr><!-- 第八行-->
+                <td></td>
+                <td> 
+                    <input type="checkbox">同意《服务条款》、《隐私政策》和《儿童隐私政策》
+                </td>
+
+            </tr>
+
+            <tr><!-- 第九行-->
+                <td></td>
+                <td> 
+                    <a href="https://www.huya.com/uzi">我想成为超级大会员 </a>
+                </td>
+
+            </tr>
+
+            <tr><!-- 第⑩行-->
+                <td></td>
+                <td> 
+                    <h5> 充钱大福利！！！！</h5>
+                    <ul>
+                        <li>十块钱送免费娃娃</li>
+                        <li>二十块送对象</li>
+                        <li>三十块送女策划</li>
+                    </ul>
+                </td>
+
+            </tr>
+
+
+
+        
+        
+
+
+    </table>
+    </form>
+</body>
+</html>

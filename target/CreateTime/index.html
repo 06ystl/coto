@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script>
+    function f() {
+        $.ajax({
+            url:"http://localhost/CreateTime/user/100001",
+            type:"GET",
+            success:function (data) {
+                alert(data.msg);
+            }
+        });
+    };
+
+    function save() {
+        $.ajax({
+            url:"http://localhost/CreateTime/user/100001",
+            type:"POST",
+            data:"_method=DELETE",
+            success:function (msg) {
+                alert(msg.status);
+            }
+        });
+    };
+
+    function register() {
+        $.ajax({
+
+            url:"http://localhost/CreateTime/user",
+            type:"POST",
+            dataType:"json",
+            data:$('form').serialize(),
+            success:function (data) {
+                alert(data.msg);
+            }
+        });
+    };
+</script>
+<body>
+<a href="user/100001">id</a>
+
+<a href="user" methods="GET">test</a>
+<br/>
+<input value="get" name="btn" type="button" onclick="f()">
+<br/>
+<form action="/user/find/100001" method="post">
+    姓名：<input type="text" name="name" /> <br/>
+    <input type="submit" value="5">
+</form>
+
+<form id="form"  action="##" method="post">
+    <input type="text" name="email">
+    <input type="password" name="password">
+    <input type="submit" onclick="register()" >
+</form>
+<br/>
+<br/>
+
+<input value="get" name="btn" type="button" onclick="save()">
+</body>
+</html>
