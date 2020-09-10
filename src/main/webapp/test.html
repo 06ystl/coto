@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script>
+    function upload(){
+
+        var fd = new FormData();
+        var files = $('#headerimg')[0].files[0];
+        fd.append('headImg',files);
+
+        $.ajax({
+            url: 'http://www.coto.bytts.cn/upload',
+            type: 'post',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(response){
+                /*if(response != 0){
+                    $("#img").attr("src",response);
+                    $(".preview img").show(); // Display image element
+                }else{
+                    alert('file not uploaded');
+                }*/
+                alert("success");
+            },
+        });
+    };
+</script>
+
+<body>
+<form action="/upload" method="post" enctype="multipart/form-data">
+<input id="headerimg" name="headerimg" type="file">
+<input type="button" value="s" name="btn_upload" id="btn_upload" onclick="upload()">
+</form>
+</body>
+</html>

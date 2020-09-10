@@ -1,6 +1,9 @@
 package cn.bytts.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @Author LZT
@@ -8,6 +11,7 @@ import java.io.Serializable;
  * @Time 18:09
  * @Description 用户信息类
  */
+@JsonIgnoreProperties(value = {"handler"})
 public class UserInfo implements Serializable {
 
     private Integer tag;
@@ -22,7 +26,7 @@ public class UserInfo implements Serializable {
 
     private Integer age;
 
-    private String hobby;
+    private List<String> hobby;
 
     private Integer award;
 
@@ -36,7 +40,7 @@ public class UserInfo implements Serializable {
     public UserInfo() {
     }
 
-    public UserInfo(Integer tag, Integer grade, String name, Integer point, String sex, Integer age, String hobby, Integer award, Integer exp, String desc, String headPath) {
+    public UserInfo(Integer tag, Integer grade, String name, Integer point, String sex, Integer age, List<String> hobby, Integer award, Integer exp, String desc, String headPath) {
         this.tag = tag;
         this.grade = grade;
         this.name = name;
@@ -98,11 +102,11 @@ public class UserInfo implements Serializable {
         this.age = age;
     }
 
-    public String getHobby() {
+    public List<String> getHobby() {
         return hobby;
     }
 
-    public void setHobby(String hobby) {
+    public void setHobby(List<String> hobby) {
         this.hobby = hobby;
     }
 
@@ -147,7 +151,7 @@ public class UserInfo implements Serializable {
                 ", point=" + point +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
-                ", hobby='" + hobby + '\'' +
+                ", hobby=" + hobby +
                 ", award=" + award +
                 ", exp=" + exp +
                 ", desc='" + desc + '\'' +

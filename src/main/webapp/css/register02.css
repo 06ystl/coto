@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body{
+        background: url("../img/325497.jpg") no-repeat center;
+        padding-top: 65px;
+}
+
+.dowebok {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 430px;
+    height: 660px;
+    margin: -330px 0 0 -215px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #000;
+    opacity:0.8;
+	color:#fff;
+}
+
+.form-item {
+    position: relative;
+    width: 360px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.form-item input {
+    width: 288px;
+    height: 48px;
+    padding-left: 70px;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #fff;
+    background-color: transparent;
+    outline: none;
+}
+
+.form-item button {
+    width: 360px;
+    height: 50px;
+    border: 0;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #1f6f4a;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+
+#email {
+    background: url(../img/email.png) 20px 14px no-repeat;
+}
+
+#password,#verifypassword {
+    background: url(../img/password.png) 23px 11px no-repeat;
+}
+
+#verificationCode{
+	background: url(../img/verdification.png) 24px 12px no-repeat;
+}
+.tip {
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 52px;
+    font-size: 14px;
+    color: #f50;
+}
+
+.reg-bar {
+    width: 360px;
+    margin: 20px auto 0;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.reg-bar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.reg-bar a:hover {
+    text-decoration: underline;
+}
+
+.reg-bar .reg {
+    float: left;
+}
+
+.reg-bar .forget {
+    float: right;
+}
+
+.dowebok ::-webkit-input-placeholder {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.dowebok :-moz-placeholder {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.dowebok ::-moz-placeholder {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.dowebok :-ms-input-placeholder {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+@media screen and (max-width: 500px) {
+    * {
+        box-sizing: border-box;
+    }
+
+    .dowebok {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0 30px;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .logo {
+        margin: 50px auto;
+    }
+
+    .form-item {
+        width: auto;
+    }
+
+    .form-item input,
+    .form-item button,
+    .reg-bar {
+        width: 100%;
+    }
+}

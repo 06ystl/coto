@@ -36,12 +36,12 @@ public class UserDaoTest {
 
     @Test
     public void deleteUserByTag() {
-        userDao.deleteUserByEmail("100004");
+        userDao.deleteUserByTag(100006);
     }
 
     @Test
     public void updateUser() {
-        User user = new User(100005,"111111","sssss@gmail.com");
+        User user = new User(100008,"sssss@gmail.com","111111");
         userDao.updateUser(user);
     }
 }

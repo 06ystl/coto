@@ -24,11 +24,12 @@
     <context:property-placeholder location="classpath:dbconfig.properties"/>
 
     <!--1.配数据源-->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="user" value="${jdbc.username}"/>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
-        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
-        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="url" value="${jdbc.jdbcUrl}"/>
+        <property name="driverClassName" value="${jdbc.driverClass}"/>
     </bean>
 
     <!--2.配置mybatis操作数据库-->
@@ -49,7 +50,7 @@
 
     <!--3.配置事务控制;配置事务管理器，让他控制住数据源里面的连接的关闭和提交-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"></property>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
     <!--4.基于xml配置，配置事务，哪些方法切入要写切入点表达式-->

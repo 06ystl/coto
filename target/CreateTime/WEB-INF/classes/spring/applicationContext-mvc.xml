@@ -18,12 +18,28 @@
 
     <!--配置视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/pages/"></property>
-        <property name="suffix" value=".html"></property>
+        <property name="prefix" value="/pages/"/>
+        <property name="suffix" value=".html"/>
     </bean>
 
     <!--扫静态资源-->
     <mvc:default-servlet-handler/>
     <!--扫动态-->
     <mvc:annotation-driven/>
+
+    <!--配置文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="#{1024*1024*5}"/>
+        <!--设置默认字符编码-->
+        <property name="defaultEncoding" value="utf-8"/>
+    </bean>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/autoLogin"/>
+            <bean class="cn.bytts.Interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

@@ -78,4 +78,12 @@
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
 
+    <!--获取项目路径-->
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>rootPath</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+    </listener>
 </web-app>

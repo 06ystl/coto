@@ -10,11 +10,18 @@ import cn.bytts.domain.User;
  */
 public interface UserService {
     /**
-     * 通过tag查找
+     * 通过email查找
      * @param email
      * @return
      */
     User selectUserByEmail(String email);
+
+    /**
+     * 通过tag查找
+     * @param tag
+     * @return
+     */
+    User selectUserByTag(Integer tag);
 
     /**
      * 插入
@@ -26,10 +33,10 @@ public interface UserService {
 
     /**
      * 通过tag删除
-     * @param email
+     * @param tag
      * @return
      */
-    int deleteUserByEmail(String email);
+    int deleteUserByTag(Integer tag);
 
     /**
      * 更新

@@ -167,15 +167,15 @@
             <appender-ref ref="Console"/>
         </logger>
         <!-- 设置org.mybatis.spring包下的日志只打印WARN及以上级别的日志 -->
-        <logger name="org.mybatis.spring" level="WARN" additivity="false">
+        <logger name="org.mybatis.spring" level="INFO" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
         <!-- 设置org.mybatis.spring包下的日志只打印WARN及以上级别的日志 -->
-        <logger name="org.springframework" level="WARN" additivity="false">
+        <logger name="org.springframework" level="INFO" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
         <!-- 设置打印sql语句配置结束 -->
-        <logger name="com.mchange" level="INFO" additivity="false">
+        <logger name="org.apache.ibatis" level="INFO" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
 

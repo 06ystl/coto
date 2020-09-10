@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>COTO注册页面</title>
+	<link href="../css/register02.css" type="text/css" rel="stylesheet">
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/md5.js"></script>
+	<script>
+		//邮箱密码不为空
+		function checkPandE() {
+			const email = $('#email').val();
+			const password = $('#password').val();
+			if (email.trim().length === 0 || password.trim().length === 0) {
+				alert("邮箱或密码不能为空");
+				return false;
+			}
+			return true;
+		}
+		//邮箱校验
+		function istrueemail() {
+			var email = document.getElementById("email").value;
+			var reg = /^([a-zA-Z\d])(\w|\-)+@[a-zA-Z\d]+\.[a-zA-Z]{2,4}$/;
+			if (reg.test(email)) {
+				return true;
+			} else {
+				alert("邮箱格式不正确");
+				return false;
+			}
+		}
+		//校验密码：只能输入长度要大于6位小于15位，由数字和字母组成的密码  
+		function istruepassword() {
+			var patrn = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,20}$/;
+			var s = document.getElementById("password").value;
+			if (!patrn.exec(s)) {
+				alert("密码输入的格式不正确,只能输入长度要大于6位小于15位，由数字和字母组成的密码");
+				return false;
+			}
+			return true;
+		}
+		//密码确认
+		function isamepassword() {
+			if (document.getElementById("password").value !==
+				document.getElementById("verifypassword").value) {
+				alert("两次密码不一致！");
+				return false;
+			} else {
+				return true;
+			}
+		}
+		function register() {
+
+			if (checkPandE() && istrueemail() && istruepassword() && isamepassword()) {
+
+				const email = $('#email').val();
+				const password = hex_md5($('#password').val());
+				$.ajax({
+					url: "/user",
+					data: {
+						email: email,
+						password: password
+					},
+					type: "POST",
+					success: function (data) {
+						if (data.message === "success") {
+							window.location.href="success.html";
+						}
+					}
+				});
+			}
+		}
+
+		function login() {
+			window.location.href="login.html";
+		}
+	</script>
+</head>
+
+<body>
+
+	<form action="##" name="registerForm">
+
+		<div class="dowebok">
+			<br />
+			<h1 align="center">新用户注册</h1>
+				<h2 align="center">USER REGISTER</h2><br>
+				<div class="form-item">
+					<input name="email" id="email" type="text" autocomplete="off" placeholder="请输入邮箱">
+				</div>
+				<div class="form-item">
+					<input name="password01" id="password" type="password" autocomplete="off" placeholder="创建密码">
+				</div>
+				<div class="form-item">
+					<input name="password02" id="verifypassword" type="password" autocomplete="off" placeholder="确认密码">
+				</div>
+
+				<div class="form-item">
+					<input name="verificationCode" id="verificationCode" type="text" autocomplete="off"
+						placeholder="请输入验证码">
+				</div>
+
+				<div id="img_verdify" align="center">
+					<img id="img_verdify" src="../img/verify_code.jpg">
+				</div> <br>
+
+				<div class="form-item"><button type="button" onclick="register()">注 册</button></div>
+				<div class="form-item"><button type="button" onclick="login()">登 录</button></div>
+		</div>
+	</form>
+
+</body>
+
+</html>

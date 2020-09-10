@@ -1,1 +1,5 @@
 cn\bytts\dao\UserDaoTest.class
+cn\bytts\dao\UserInfoDaoTest.class
+cn\bytts\service\UserInfoServiceTest.class
+cn\bytts\dao\BookDaoTest.class
+cn\bytts\test\Main.class

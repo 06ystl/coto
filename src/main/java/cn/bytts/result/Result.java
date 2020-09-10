@@ -22,6 +22,8 @@ public class Result implements Serializable {
     private String message;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String path;
 
 
 
@@ -53,6 +55,22 @@ public class Result implements Serializable {
         this.data = data;
     }
 
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    /*public static Result success(String path) {
+        Result result = new Result();
+        result.setPath(path);
+        result.setCode(HttpStatus.OK.value());
+        result.setMessage(DEFAULT_SUCCESS_MESSAGE);
+        return result;
+    }*/
+
     public static Result success() {
         Result result = new Result();
         result.setCode(HttpStatus.OK.value());
@@ -78,12 +96,13 @@ public class Result implements Serializable {
     public static Result error(int code) {
         Result result = new Result();
         result.setCode(code);
+        result.setMessage(DEFAULT_ERROR_MESSAGE);
         return result;
     }
 
     public static Result error(int code, String message ) {
         Result result = new Result();
-        result.setCode(HttpStatus.BAD_REQUEST.value());
+        result.setCode(code);
         if ("".equals(message) || message.length() < 1) {
             message = DEFAULT_ERROR_MESSAGE;
         }

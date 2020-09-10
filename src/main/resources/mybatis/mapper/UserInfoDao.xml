@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bytts.dao.UserInfoDao">
+    
+    <resultMap id="UserInfo" type="cn.bytts.domain.UserInfo">
+        <id property="tag" column="tag"/>
+        <result property="grade" column="grade"/>
+        <result property="name" column="name"/>
+        <result property="point" column="point"/>
+        <result property="sex" column="sex"/>
+        <result property="exp" column="exp"/>
+        <result property="age" column="age"/>
+        <result property="desc" column="desc"/>
+        <result property="award" column="award"/>
+        <result property="headPath" column="head_path"/>
+        <collection property="hobby" ofType="java.lang.String" select="selectHobbyByTag" column="tag"/>
+    </resultMap>
+
+    <select id="selectHobbyByTag" resultType="java.lang.String">
+        select hobby from t_hobby where tag = #{tag}
+    </select>
+
+    <select id="selectUserInfoByTag" resultMap="UserInfo">
+        select * from t_user_info where tag = #{tag};
+    </select>
+
+    <insert id="saveUserInfo" >
+        INSERT INTO `t_user_info`(`tag`, `grade`, `name`, `point`, `sex`, `exp`, `age`, `desc`, `head_path`, `award`)
+        VALUES(#{tag},#{grade},#{name},#{point},#{sex},#{exp},#{age},#{desc},#{headPath},#{award});
+        INSERT INTO t_hobby (tag,hobby) VALUES
+        <foreach collection="hobby" item="item" index="index" separator=",">
+            (
+            #{tag},
+            #{item}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateUserInfo">
+        update t_userinfo set
+        `grade` = #{grade},
+        `name` = #{name},
+        `point` = #{point},
+        `sex` = {sex},
+        `exp` = #{exp},
+        `age` = #{age},
+        `desc` = #{desc},
+        `head_path` = #{headPath},
+        `award` = #{award}
+         where
+         tag = #{tag};
+
+         delete from t_hobby where tag = #{tag};
+
+        INSERT INTO t_hobby (tag,hobby) VALUES
+        <foreach collection="hobby" item="item" index="index" separator=",">
+            (
+            #{tag},
+            #{item}
+            )
+        </foreach>
+    </update>
+</mapper>

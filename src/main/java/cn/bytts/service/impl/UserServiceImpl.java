@@ -15,15 +15,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserDao userDao;
-
-    public UserServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
-    }
+    @Autowired
+    UserDao userDao;
 
     @Override
     public User selectUserByEmail(String email) {
         return userDao.selectUserByEmail(email);
+    }
+
+    @Override
+    public User selectUserByTag(Integer tag) {
+        return userDao.selectUserByTag(tag);
     }
 
     @Override
@@ -32,12 +34,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int deleteUserByEmail(String email) {
-        return userDao.deleteUserByEmail(email);
+    public int deleteUserByTag(Integer tag) {
+        if (userDao.selectUserByTag(tag) != null) {
+            return userDao.deleteUserByTag(tag);
+        }
+        return 0;
     }
 
     @Override
     public int updateUser(User user) {
-        return userDao.updateUser(user);
+        if (userDao.selectUserByTag(user.getTag()) != null) {
+            return userDao.updateUser(user);
+        }
+        return 0;
     }
 }

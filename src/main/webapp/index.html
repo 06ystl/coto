@@ -14,7 +14,7 @@
                 alert(data.msg);
             }
         });
-    };
+    }
 
     function save() {
         $.ajax({
@@ -25,7 +25,7 @@
                 alert(msg.status);
             }
         });
-    };
+    }
 
     function register() {
         $.ajax({
@@ -38,28 +38,11 @@
                 alert(data.msg);
             }
         });
-    };
+    }
 </script>
 <body>
-<a href="user/100001">id</a>
+<p style="text-align: center"><a href="/pages/login.html">登录</a></p>
+<p style="text-align: center"><a href="/pages/register.html">注册</a></p>
 
-<a href="user" methods="GET">test</a>
-<br/>
-<input value="get" name="btn" type="button" onclick="f()">
-<br/>
-<form action="/user/find/100001" method="post">
-    姓名：<input type="text" name="name" /> <br/>
-    <input type="submit" value="5">
-</form>
-
-<form id="form"  action="##" method="post">
-    <input type="text" name="email">
-    <input type="password" name="password">
-    <input type="submit" onclick="register()" >
-</form>
-<br/>
-<br/>
-
-<input value="get" name="btn" type="button" onclick="save()">
 </body>
 </html>

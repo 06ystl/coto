@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>COTO登录页面</title>
+    <link href="../css/password.css" type="text/css" rel="stylesheet">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/md5.js"></script>
+    <script>
+
+        function autoLogin(){
+            $.ajax({
+                url:"/autoLogin",
+                type:"POST",
+                data:"tag="+$.cookie("tag"),
+                success:function (msg) {
+                    if (msg.message==="success") {
+                        window.location.href="success.html";
+                    }
+                }
+            });
+
+        }
+
+        //检查登录邮箱和密码是否为空
+        function checkPandE() {
+            const email = $('#email').val();
+            const password = $('#password').val();
+            if (email.trim().length === 0 || password.trim().length === 0) {
+                alert("邮箱或密码不能为空");
+                return false;
+            }
+            return true;
+        }
+        //邮箱密码正则校验
+        function istrueemail() {
+            const email = document.getElementById("email").value;
+            var reg = /^([a-zA-Z\d])(\w|\-)+@[a-zA-Z\d]+\.[a-zA-Z]{2,4}$/;
+
+            var s = document.getElementById("password").value;
+            var patrn = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+            if (!patrn.exec(s)) {
+                alert("密码输入的格式不正确！请输入长度大于6小于15位且由数字和字母组成的密码");
+                return false;
+            }
+            if (!reg.test(email)) {
+                alert("邮箱格式不正确");
+                return false;
+            }
+            if (patrn.test(s) && reg.test(email)) {
+                //alert("邮箱密码格式正确");
+                return true;
+            }
+
+        }
+
+        //总控制
+        function checkLogin() {
+            const email = $('#email').val();
+            const password = hex_md5($('#password').val());
+            alert(password);
+            if (checkPandE() && istrueemail()) {
+                $.ajax({
+                    url:"/login"+"?email="+email,
+                    type:"GET",
+                    success:function (data) {
+                        alert(data.data.email);
+                        if (data.data.password===password){
+                            window.location.href="success.html";
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="autoLogin()">
+    <form action="##" name="loginForm">
+        <div class="dowebok">
+            <div class="logo"></div>
+            <div class="form-item">
+                <input name="email" id="email" type="text" autocomplete="off" placeholder="邮箱">
+                <p class="tip">请输入合法的邮箱地址</p>
+            </div>
+            <div class="form-item">
+                <input name="password" id="password" type="password" autocomplete="off" placeholder="登录密码">
+                <p class="tip">邮箱或密码不正确</p>
+            </div>
+
+            <div class="form-item"><button type="button"  onclick="checkLogin()" >登 录</button></div>
+            <input type="button"  onclick="checkLogin()">
+            <div class="reg-bar">
+                <a class="reg" href="/pages/register.html">立即注册</a>
+                <a class="forget" href="forgetpassword.html">忘记密码</a>
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>
