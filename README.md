@@ -1,4 +1,4 @@
-# coto后端
+# coto
    > 使用ssm写的后端，前端分别是Web端和 [Android](https://github.com/Code-Lark/COTO) 端
 * 设计完成user接口
 * 设计完成UserInfo接口
