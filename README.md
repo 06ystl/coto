@@ -1,7 +1,8 @@
-# coto
-<<<<<<< HEAD
+# coto后端
+   > 使用ssm写的后端，前端分别是Web端和 [Android](https://github.com/Code-Lark/COTO) 端
+* 设计完成user接口
+* 设计完成UserInfo接口
+* 完成图片上传接口
+* web端登录接口
+* 前后端使用密文传输，密文保存数据
 
-. 设计完成user api
-=======
-* 设计完成user api
->>>>>>> f0e941a... 编写图片上传控制器，为web端提供自动登录专用接口，完全使用密文传输，密文保存
